@@ -1,4 +1,4 @@
-* {
+<style>* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -6,14 +6,14 @@
 
 body {
     font-family: Arial, sans-serif;
-    background: #A775C9;
+    background: #a775c9;
     padding: 20px;
 }
 
 h1 {
     text-align: center;
     background: white;
-    color: #A775C9;
+    color: #a775c9;
     padding: 15px;
     border-radius: 15px;
     margin-bottom: 25px;
@@ -27,8 +27,8 @@ h1 {
 }
 
 .column {
-    width: 320px;
-    background: #D480BB;
+    width: 350px;
+    background: #d480bb;
     border-radius: 15px;
     padding: 15px;
 }
@@ -46,65 +46,117 @@ h1 {
 
 .count {
     background: white;
-    color: #A775C9;
+    color: #a775c9;
     width: 30px;
     height: 30px;
     border-radius: 50%;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     font-weight: bold;
 }
 
 .task-list {
-    min-height: 300px;
+    min-height: 250px;
 }
 
 .task {
-    background: #DEAFC2;
+    background: #deafc2;
     padding: 12px;
-    border-radius: 10px;
     margin-bottom: 10px;
+    border-radius: 10px;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    cursor: grab;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.task h4 {
+    color: #333;
+}
+
+.task p {
+    color: #555;
+    font-size: 14px;
+}
+
+.task small {
+    color: #666;
+}
+
+.task-buttons {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+
+.task button {
+    border: none;
+    padding: 6px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.edit-btn {
+    background: #fff;
 }
 
 .delete-btn {
-    border: none;
-    background: #A775C9;
+    background: #ff4d4d;
     color: white;
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    cursor: pointer;
+}
+
+.done-btn {
+    background: #61bd4f;
+    color: white;
 }
 
 .add-card {
     margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 
-.add-card input {
-    width: 100%;
+.add-card input,
+.add-card textarea,
+.add-card select {
     padding: 10px;
     border: none;
     border-radius: 8px;
-    margin-bottom: 8px;
 }
 
 .add-card button {
-    width: 100%;
     padding: 10px;
     border: none;
     border-radius: 8px;
-    background: #DEAFC2;
+    background: #deafc2;
     color: white;
-    font-weight: bold;
     cursor: pointer;
+    font-weight: bold;
 }
 
-.add-card button:hover {
-    background: white;
-    color: #A775C9;
+.label {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 10px;
+    color: white;
+    width: fit-content;
+    font-size: 12px;
+}
+
+.church {
+    background: #eb5a46;
+}
+
+.work {
+    background: #61bd4f;
+}
+
+.personal {
+    background: #0079bf;
+}
+
+.school {
+    background: #f2d600;
+    color: black;
 }
