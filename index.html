@@ -3,47 +3,257 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Trello</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Mini Trello Board</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        background: #a775c9;
+        padding: 20px;
+      }
+
+      h1 {
+        text-align: center;
+        background: white;
+        color: #a775c9;
+        padding: 15px;
+        border-radius: 15px;
+        margin-bottom: 25px;
+      }
+
+      .board {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+
+      .column {
+        width: 350px;
+        background: #d480bb;
+        border-radius: 15px;
+        padding: 15px;
+      }
+
+      .column-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+      }
+
+      .column h2 {
+        color: white;
+      }
+
+      .count {
+        background: white;
+        color: #a775c9;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+      }
+
+      .task-list {
+        min-height: 250px;
+      }
+
+      .task {
+        background: #deafc2;
+        padding: 12px;
+        margin-bottom: 10px;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .task h4 {
+        color: #333;
+      }
+
+      .task p {
+        color: #555;
+        font-size: 14px;
+      }
+
+      .task small {
+        color: #666;
+      }
+
+      .task-buttons {
+        display: flex;
+        gap: 5px;
+        flex-wrap: wrap;
+      }
+
+      .task button {
+        border: none;
+        padding: 6px;
+        border-radius: 6px;
+        cursor: pointer;
+      }
+
+      .edit-btn {
+        background: #fff;
+      }
+
+      .delete-btn {
+        background: #ff4d4d;
+        color: white;
+      }
+
+      .done-btn {
+        background: #61bd4f;
+        color: white;
+      }
+
+      .add-card {
+        margin-top: 15px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .add-card input,
+      .add-card textarea,
+      .add-card select {
+        padding: 10px;
+        border: none;
+        border-radius: 8px;
+      }
+
+      .add-card button {
+        padding: 10px;
+        border: none;
+        border-radius: 8px;
+        background: #deafc2;
+        color: white;
+        cursor: pointer;
+        font-weight: bold;
+      }
+
+      .label {
+        display: inline-block;
+        padding: 4px 8px;
+        border-radius: 10px;
+        color: white;
+        width: fit-content;
+        font-size: 12px;
+      }
+
+      .church {
+        background: #eb5a46;
+      }
+
+      .work {
+        background: #61bd4f;
+      }
+
+      .personal {
+        background: #0079bf;
+      }
+
+      .school {
+        background: #f2d600;
+        color: black;
+      }
+    </style>
   </head>
   <body>
-    <h1>Trello</h1>
-
-    <div class="add-task">
-      <input type="text" id="taskTitle" placeholder="Task title" />
-
-      <textarea id="taskDescription" placeholder="Task description"> </textarea>
-
-      <input type="date" id="taskDueDate" />
-
-      <select id="taskLabel">
-        <option value="">No Label</option>
-        <option value="bug">Work</option>
-        <option value="feature">Personal</option>
-        <option value="design">Work</option>
-        <option value="urgent">Urgent</option>
-      </select>
-
-      <button onclick="addTask()">Add Task</button>
-    </div>
+    <h1>My Trello Board</h1>
 
     <div class="board">
+      <!-- TO DO -->
       <div class="column">
-        <h2>To Do</h2>
+        <div class="column-header">
+          <h2>To Do</h2>
+          <span class="count" id="todoCount">0</span>
+        </div>
+
         <div class="task-list" id="todo"></div>
+
+        <div class="add-card">
+          <input type="text" id="todoTitle" placeholder="Task Title" />
+          <textarea id="todoDescription" placeholder="Description"></textarea>
+          <input type="date" id="todoDate" />
+
+          <select id="todoLabel">
+            <option value="">Label</option>
+            <option value="church">Church</option>
+            <option value="work">Work</option>
+            <option value="personal">Personal</option>
+            <option value="school">School</option>
+          </select>
+
+          <button onclick="addTask('todo')">+ Add Task</button>
+        </div>
       </div>
 
+      <!-- DOING -->
       <div class="column">
-        <h2>Doing</h2>
+        <div class="column-header">
+          <h2>Doing</h2>
+          <span class="count" id="doingCount">0</span>
+        </div>
+
         <div class="task-list" id="doing"></div>
+
+        <div class="add-card">
+          <input type="text" id="doingTitle" placeholder="Task Title" />
+          <textarea id="doingDescription" placeholder="Description"></textarea>
+          <input type="date" id="doingDate" />
+
+          <select id="doingLabel">
+            <option value="">Label</option>
+            <option value="church">Church</option>
+            <option value="work">Work</option>
+            <option value="personal">Personal</option>
+            <option value="school">School</option>
+          </select>
+
+          <button onclick="addTask('doing')">+ Add Task</button>
+        </div>
       </div>
 
+      <!-- DONE -->
       <div class="column">
-        <h2>Done</h2>
+        <div class="column-header">
+          <h2>Done</h2>
+          <span class="count" id="doneCount">0</span>
+        </div>
+
         <div class="task-list" id="done"></div>
+
+        <div class="add-card">
+          <input type="text" id="doneTitle" placeholder="Task Title" />
+          <textarea id="doneDescription" placeholder="Description"></textarea>
+          <input type="date" id="doneDate" />
+
+          <select id="doneLabel">
+            <option value="">Label</option>
+            <option value="church">Church</option>
+            <option value="work">Work</option>
+            <option value="personal">Personal</option>
+            <option value="school">School</option>
+          </select>
+
+          <button onclick="addTask('done')">+ Add Task</button>
+        </div>
       </div>
     </div>
 
-    <script src="function.js"></script>
+    
   </body>
 </html>
+<script src="function.js"></script>
