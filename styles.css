@@ -1,4 +1,4 @@
-<style>* {
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -101,12 +101,12 @@ h1 {
 }
 
 .delete-btn {
-    background: #ff4d4d;
+    background: #7392B5;
     color: white;
 }
 
 .done-btn {
-    background: #61bd4f;
+    background: #402B47;
     color: white;
 }
 
@@ -145,18 +145,18 @@ h1 {
 }
 
 .church {
-    background: #eb5a46;
+    background: #8c98e2;
 }
 
 .work {
-    background: #61bd4f;
+    background: #cac9e9;
 }
 
 .personal {
-    background: #0079bf;
+    background: #cd81ff;
 }
 
 .school {
-    background: #f2d600;
+    background: #ce4abe;
     color: black;
 }
